@@ -17,7 +17,7 @@ type BlindsInRadiusRequest struct {
 }
 
 type CreateBlindRequest struct {
-	BlindID   string  `json:"blindId" binding:"required"`
+	Id        string  `json:"id" binding:"required"` // id assigned by VA DWR, so not an auto-generated guid
 	Latitude  float64 `json:"latitude" binding:"required,min=-90,max=90"`
 	Longitude float64 `json:"longitude" binding:"required,min=-180,max=180"`
 }

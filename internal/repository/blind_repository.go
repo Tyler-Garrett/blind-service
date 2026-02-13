@@ -59,8 +59,8 @@ func (r *BlindRepository) GetAll(ctx context.Context) ([]domain.Blind, error) {
 	return blinds, nil
 }
 
-func (r *BlindRepository) GetById(ctx context.Context, blindId string) (*domain.Blind, error) {
-	response, err := r.client.GetEntity(ctx, "VA", blindId, nil)
+func (r *BlindRepository) GetById(ctx context.Context, id string) (*domain.Blind, error) {
+	response, err := r.client.GetEntity(ctx, "VA", id, nil)
 	if err != nil {
 		return nil, domain.ErrBlindNotFound
 	}
@@ -112,8 +112,8 @@ func (r *BlindRepository) Create(ctx context.Context, blind *domain.Blind) error
 	return nil
 }
 
-func (r *BlindRepository) Update(ctx context.Context, blindID string, blind *domain.Blind) error {
-	existing, err := r.GetById(ctx, blindID)
+func (r *BlindRepository) Update(ctx context.Context, id string, blind *domain.Blind) error {
+	existing, err := r.GetById(ctx, id)
 	if err != nil {
 		return err
 	}
@@ -141,8 +141,8 @@ func (r *BlindRepository) Update(ctx context.Context, blindID string, blind *dom
 	return nil
 }
 
-func (r *BlindRepository) Delete(ctx context.Context, blindID string) error {
-	_, err := r.client.DeleteEntity(ctx, "VA", blindID, nil)
+func (r *BlindRepository) Delete(ctx context.Context, id string) error {
+	_, err := r.client.DeleteEntity(ctx, "VA", id, nil)
 	if err != nil {
 		return domain.ErrBlindNotFound
 	}

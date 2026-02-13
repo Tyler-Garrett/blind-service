@@ -45,7 +45,7 @@ func Load() (*Config, error) {
 		},
 		Database: DatabaseConfig{
 			TableStorageConnectionString: getEnv("AZURE_TABLE_STORAGE_CONNECTION", ""),
-			BlindsTableName:              getEnv("BLINDS_TABLE_NAME", "Blinds"),
+			BlindsTableName:              getEnv("BLINDS_TABLE_NAME", "blinds"),
 		},
 		CORS: CORSConfig{
 			AllowedOrigins: getEnvAsSlice("CORS_ALLOWED_ORIGINS", []string{"http://localhost:3000"}),
