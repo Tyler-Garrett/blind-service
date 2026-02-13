@@ -196,4 +196,4 @@ func (h *BlindHandler) GetStats(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, stats)
-}
+} //hi
