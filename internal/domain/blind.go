@@ -3,11 +3,11 @@ package domain
 import "time"
 
 type Blind struct {
-	Id   string     `json:"id"`
+	Id        string     `json:"id"`
 	Latitude  float64    `json:"latitude"`
 	Longitude float64    `json:"longitude"`
 	CreatedAt time.Time  `json:"createdAt"`
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"` // pointer for nil checking
 }
 
 type BlindsInRadiusRequest struct {
@@ -28,9 +28,9 @@ type UpdateBlindRequest struct {
 }
 
 type BlindStats struct {
-	TotalBlinds int     `json:"totalBlinds"`
-	MinLatitude float64 `json:"minLatitude"`
-	MaxLatitude float64 `json:"maxLatitude"`
+	TotalBlinds  int     `json:"totalBlinds"`
+	MinLatitude  float64 `json:"minLatitude"`
+	MaxLatitude  float64 `json:"maxLatitude"`
 	MinLongitude float64 `json:"minLongitude"`
 	MaxLongitude float64 `json:"maxLongitude"`
 }
