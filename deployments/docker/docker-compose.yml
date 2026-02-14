@@ -10,8 +10,8 @@ services:
     environment:
       - PORT=8080
       - ENVIRONMENT=development
-      - AZURE_TABLE_STORAGE_CONNECTION=${AZURE_TABLE_STORAGE_CONNECTION:-UseDevelopmentStorage=true}
-      - BLINDS_TABLE_NAME=blinds
+      - AZURE_TABLE_STORAGE_CONNECTION=${AZURE_TABLE_STORAGE_CONNECTION}
+      - BLINDS_TABLE_NAME=${BLINDS_TABLE_NAME}
       - CORS_ALLOWED_ORIGINS=http://localhost:3000,http://localhost:5173
       - SHUTDOWN_TIMEOUT_SECONDS=10
     volumes:
