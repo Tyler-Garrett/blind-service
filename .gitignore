@@ -1,0 +1,44 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+blind-service
+*.test
+*.out
+
+# Go workspace
+go.work
+go.work.sum
+
+# Dependencies
+vendor/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Test coverage
+*.coverprofile
+coverage.txt
+coverage.html
+
+# Air (hot reload)
+tmp/
+.air.toml
+
+# Logs
+*.log
+
+# Azure
+.azure/

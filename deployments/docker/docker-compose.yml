@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  blind-service:
+    build:
+      context: ../..
+      dockerfile: deployments/docker/Dockerfile.dev
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - ENVIRONMENT=development
+      - AZURE_TABLE_STORAGE_CONNECTION=${AZURE_TABLE_STORAGE_CONNECTION}
+      - BLINDS_TABLE_NAME=${BLINDS_TABLE_NAME}
+      - CORS_ALLOWED_ORIGINS=http://localhost:3000,http://localhost:5173
+      - SHUTDOWN_TIMEOUT_SECONDS=10
+    volumes:
+      - ../..:/app
+    depends_on:
+      - azurite
+    networks:
+      - blind-service-network
+
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite:latest
+    ports:
+      - "10000:10000"
+      - "10001:10001"
+      - "10002:10002"
+    volumes:
+      - azurite-data:/data
+    command: azurite --blobHost 0.0.0.0 --queueHost 0.0.0.0 --tableHost 0.0.0.0
+    networks:
+      - blind-service-network
+
+volumes:
+  azurite-data:
+
+networks:
+  blind-service-network:
+    driver: bridge
